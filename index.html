@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>batch2 Lecture 65,66 Calculator</title>
+
+    <style>
+        .myCalculator {
+            width: 500px;
+            height: 500px;
+            background: #333;
+            margin: 100px auto;
+            border-radius: 15px;
+            padding-top: 20px;
+        }
+
+        .myResult {
+            width: 90%;
+            height: 100px;
+            background: #ccc;
+            margin: auto;
+            border-radius: 15px;
+            line-height: 100px;
+            text-align: right;
+            padding-right: 20px;
+            font-size: 35px;
+
+
+        }
+
+        .mytable {
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+            height: 365px;
+
+
+        }
+
+        table button {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="myCalculator">
+        <div class="myResult">
+
+        </div>
+
+        <table class="mytable">
+            <tr>
+                <td>
+                    <button onclick="anil(this)">7</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">8</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">9</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">X</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="anil(this)">4</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">5</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">6</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">/</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="anil(this)">1</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">2</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">3</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="anil(this)">0</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">.</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">=</button>
+                </td>
+                <td>
+                    <button onclick="anil(this)">+</button>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <script>
+        var isOperatorButtonClicked = false; // false
+        //I can write the js code before the closing of body tag
+
+
+        //Global Variable
+        //object.method();
+        let r = document.querySelector("div.myResult");
+        var leftValue;
+        var rightValue;
+        var operator = '';
+
+
+
+        //1. Function defination
+        function anil(elem) { // elem is a formal arguemnt
+            console.log(elem);
+
+            r.innerHTML = r.innerHTML + elem.innerHTML;
+            switch (elem.innerHTML) {
+                case 'X':
+                    isOperatorButtonClicked = true;
+                    // code block
+                    operator = 'X';
+                    leftValue = r.innerHTML;
+
+                    window.localStorage.setItem('leftValue', leftValue);
+                    window.localStorage.setItem('operator', 'X');
+                    console.log('LeftValue is ', leftValue);
+                    console.log('RightValue is ', rightValue);
+                    break;
+                case '/':
+                    isOperatorButtonClicked = true;
+                    // code block
+                    console.log('Division operation');
+                    break;
+                case '-':
+                    isOperatorButtonClicked = true;
+                    // code block
+                    console.log('Substration operation');
+                    break;
+                case '+':
+                    isOperatorButtonClicked = true;
+                    // code block
+                    console.log('Addition operation');
+                    break;
+                case '=':
+                    // code block
+                    isOperatorButtonClicked = false;
+
+                    leftValue = window.localStorage.getItem('leftValue');
+                    rightValue = window.localStorage.getItem('rightValue');
+                    operator = window.localStorage.getItem('operator');
+
+                    switch (operator) {
+                        case "X":
+                            leftValue = parseFloat(leftValue); // String into number
+                            rightValue = parseFloat(rightValue); // String into number
+                            console.log(leftValue * rightValue);
+                            r.innerHTML = leftValue * rightValue;
+                            //r.innerHTML = r.innerHTML.substring(0, r.innerHTML.length-1);
+                            //console.log(r.innerHTML);
+                            break;
+
+                        default:
+                    }
+
+
+                    break;
+                default:
+                // code block
+            }
+            if (isOperatorButtonClicked === true) {
+                rightValue = elem.innerHTML;
+                rightValue = window.localStorage.setItem('rightValue', rightValue)
+                console.log('Right value ', elem.innerHTML);
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
