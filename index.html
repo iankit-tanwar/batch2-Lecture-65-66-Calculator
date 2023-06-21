@@ -116,11 +116,8 @@
 
     <script>
         var isOperatorButtonClicked = false; // false
-        //I can write the js code before the closing of body tag
-
-
-        //Global Variable
-        //object.method();
+       
+        
         let r = document.querySelector("div.myResult");
         var leftValue;
         var rightValue;
@@ -170,12 +167,11 @@
 
                     switch (operator) {
                         case "X":
-                            leftValue = parseFloat(leftValue); // String into number
-                            rightValue = parseFloat(rightValue); // String into number
+                            leftValue = parseFloat(leftValue); 
+                            rightValue = parseFloat(rightValue); 
                             console.log(leftValue * rightValue);
                             r.innerHTML = leftValue * rightValue;
-                            //r.innerHTML = r.innerHTML.substring(0, r.innerHTML.length-1);
-                            //console.log(r.innerHTML);
+                            
                             break;
 
                         default:
